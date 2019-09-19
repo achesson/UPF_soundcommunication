@@ -1,0 +1,55 @@
+#N canvas 735 23 736 452 10;
+#X declare -lib mrpeach;
+#X obj 2 24 import mrpeach;
+#X floatatom 129 338 5 0 0 0 - - -;
+#X obj 2 95 udpreceive 7005;
+#X obj 2 130 unpackOSC;
+#X floatatom 63 316 5 0 0 0 - - -;
+#X obj 272 54 cnv 15 300 300 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X msg 301 127 disconnect;
+#X floatatom 449 139 5 0 0 0 - - -;
+#X obj 286 274 udpsend;
+#X obj 387 226 packOSC;
+#X text 564 195 <-- prepare an OSC Message;
+#X text 449 229 <--- pack the message;
+#X text 337 275 <--- send the message;
+#X text 442 92 <--- connect to port on the local computer;
+#X msg 287 88 connect localhost 6448;
+#X text 274 31 Send to wekinator;
+#X floatatom 198 342 5 0 0 0 - - -;
+#X floatatom 391 141 5 0 0 0 - - -;
+#X floatatom 497 138 5 0 0 0 - - -;
+#X obj 387 170 pack f f f;
+#X msg 348 196 sendtyped /wek/inputs fff \$1 \$2 \$3;
+#X obj 6 342 print;
+#X obj 83 390 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 267 382 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 429 382 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 71 284 unpack f f f;
+#X obj 33 185 routeOSC /gyrosc/p1/gyro;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 26 0;
+#X connect 4 0 17 0;
+#X connect 6 0 8 0;
+#X connect 7 0 19 1;
+#X connect 9 0 8 0;
+#X connect 14 0 8 0;
+#X connect 16 0 18 0;
+#X connect 17 0 19 0;
+#X connect 18 0 19 2;
+#X connect 19 0 20 0;
+#X connect 20 0 9 0;
+#X connect 22 0 4 0;
+#X connect 23 0 1 0;
+#X connect 24 0 16 0;
+#X connect 25 0 4 0;
+#X connect 25 1 1 0;
+#X connect 25 2 16 0;
+#X connect 26 0 21 0;
+#X connect 26 0 25 0;
+#X coords 0 -1 1 1 85 60 1 100 100;
