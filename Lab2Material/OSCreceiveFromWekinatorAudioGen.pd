@@ -1,0 +1,61 @@
+#N canvas 11 31 736 452 10;
+#X obj 16 19 import mrpeach;
+#X obj 85 101 unpackOSC;
+#X obj 91 177 unpack f f f;
+#X floatatom 88 211 5 0 0 0 - - -;
+#X floatatom 126 212 5 0 0 0 - - -;
+#X floatatom 170 214 5 0 0 0 - - -;
+#X obj 85 134 routeOSC /wek/outputs;
+#X obj 83 60 udpreceive 7005;
+#X obj 245 42 cnv 15 170 250 empty empty empty 20 12 0 14 -228992 -66577
+0;
+#X obj 268 220 cnv 15 100 60 empty empty empty 20 12 0 14 -195568 -66577
+0;
+#X obj 251 44 cnv 15 150 100 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X obj 275 255 dac~;
+#X obj 272 223 *~ 1;
+#X obj 386 220 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X text 373 281 volumen_out;
+#X floatatom 384 305 5 0 0 0 - - -;
+#X obj 252 49 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 379 105 comment;
+#X obj 254 122 soundfiler;
+#X obj 271 190 tabplay~ array1;
+#X msg 323 159 stop;
+#X msg 271 158 bang;
+#X obj 90 247 > 0.5;
+#X floatatom 93 295 5 0 0 0 - - -;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array array1 44100 float 2;
+#X coords 0 1 44100 -1 200 140 1;
+#X restore 464 140 graph;
+#X msg 253 72 read sinus.wav array1;
+#X msg 268 96 read -resize sinus.wav array1;
+#X obj 97 327 select 1;
+#X obj 270 -1;
+#X msg 270 20;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 2 2 5 0;
+#X connect 3 0 22 0;
+#X connect 6 0 2 0;
+#X connect 7 0 1 0;
+#X connect 12 0 11 0;
+#X connect 12 0 11 1;
+#X connect 13 0 15 0;
+#X connect 13 0 12 1;
+#X connect 16 0 25 0;
+#X connect 19 0 12 0;
+#X connect 20 0 19 0;
+#X connect 21 0 19 0;
+#X connect 22 0 23 0;
+#X connect 23 0 27 0;
+#X connect 25 0 18 0;
+#X connect 26 0 18 0;
+#X connect 27 0 21 0;
+#X connect 28 0 29 0;
+#X coords 0 -1 1 1 85 60 1 100 100;
